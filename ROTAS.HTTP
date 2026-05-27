@@ -9,3 +9,6 @@ Content-Type: application/json
     "description": "Terceira tarefa qualquer",
     "status": 0
 }
+
+###
+DELETE http://localhost:3333/create-task/2

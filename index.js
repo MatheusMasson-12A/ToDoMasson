@@ -1,9 +1,7 @@
 import express, { request, response } from "express";
-
 import mysql2 from "mysql2";
 
 const app = express()
-
 app.use(express.json())
 
 app.get("/", (request,response) => {
@@ -28,7 +26,21 @@ app.post("/create-task", (request,response) => {
     })
 })
 
+app.delete("/create-task/:id", (request,response) => {
+    const { id } = request.params
 
+    const deleteCommand = "DELETE FROM ToDo_MatheusMasson WHERE id=?"
+
+    database.query(deleteCommand, [id], (error) => {
+        if (error) {
+            console.log(error)
+        } else {
+            response.json({
+                message: "Tarefa apagada com sucesso!"
+            })
+        }
+    })
+})
 
 const database = mysql2.createPool({
     host: "benserverplex.ddns.net",
