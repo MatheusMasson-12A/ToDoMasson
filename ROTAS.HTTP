@@ -4,11 +4,16 @@ GET http://localhost:3333/
 POST http://localhost:3333/create-task
 Content-Type: application/json
 
-
 {
-    "description": "Terceira tarefa qualquer",
-    "status": 0
+    "description": "Chegar Atrasado",
+    "status": 1
 }
 
 ###
-DELETE http://localhost:3333/create-task/2
+DELETE http://localhost:3333/create-task/
+
+###
+GET http://localhost:3333/completed-tasks
+
+###
+GET http://localhost:3333/imcompleted-tasks

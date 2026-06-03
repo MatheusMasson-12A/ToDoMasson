@@ -42,6 +42,30 @@ app.delete("/create-task/:id", (request,response) => {
     })
 })
 
+app.get("/completed-tasks", (request, response) => {
+    const selectCommand = "SELECT * FROM ToDo_MatheusMasson WHERE status = 1"
+
+    database.query(selectCommand, (error, data) => {
+        if (error) {
+            console.log(error)
+        } else {
+            response.json(data)
+        }
+    })
+})
+
+app.get("/incompleted-tasks", (request, response) => {
+    const selectCommand = "SELECT * FROM ToDo_MatheusMasson WHERE status = 0"
+
+    database.query(selectCommand, (error, data) => {
+        if (error) {
+            console.log(error)
+        } else {
+            response.json(data)
+        }
+    })
+})
+
 const database = mysql2.createPool({
     host: "benserverplex.ddns.net",
     user: "aluno_projetos",
