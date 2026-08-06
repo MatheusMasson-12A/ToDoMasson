@@ -6,7 +6,7 @@
     "dev": "node --watch index.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Matheus Masson e Sophia ",
   "license": "ISC",
   "description": "",
   "type": "module",

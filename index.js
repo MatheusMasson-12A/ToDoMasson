@@ -10,40 +10,40 @@ app.get("/", (request,response) => {
     })
 })
 
-app.post("/create-task", (request,response) => {
+app.post("/create-filme", (request,response) => {
     const { description, status } = request.body
 
-    const insertCommand = "INSERT INTO ToDo_MatheusMasson(description, status) VALUES (?, ?)"
+    const insertCommand = "INSERT INTO filmes_Masson_e_Sophia(description, status) VALUES (?, ?)"
 
     database.query(insertCommand, [description, status], (error) => {
         if (error) {
             console.log(error)
         } else {
             response.status(201).json({
-                message: "Tarefa criada com sucesso!"
+                message: "Filme cadastrado com sucesso!"
             })
         }
     })
 })
 
-app.delete("/create-task/:id", (request,response) => {
+app.delete("/create-filme/:id", (request,response) => {
     const { id } = request.params
 
-    const deleteCommand = "DELETE FROM ToDo_MatheusMasson WHERE id=?"
+    const deleteCommand = "DELETE FROM filmes_Masson_e_Sophia WHERE id=?"
 
     database.query(deleteCommand, [id], (error) => {
         if (error) {
             console.log(error)
         } else {
             response.json({
-                message: "Tarefa apagada com sucesso!"
+                message: "Filme apagada com sucesso!"
             })
         }
     })
 })
 
-app.get("/completed-tasks", (request, response) => {
-    const selectCommand = "SELECT * FROM ToDo_MatheusMasson WHERE status = 1"
+app.get("/completed-filme", (request, response) => {
+    const selectCommand = "SELECT * FROM filmes_Masson_e_Sophia WHERE status = 1"
 
     database.query(selectCommand, (error, data) => {
         if (error) {
@@ -55,7 +55,7 @@ app.get("/completed-tasks", (request, response) => {
 })
 
 app.get("/incompleted-tasks", (request, response) => {
-    const selectCommand = "SELECT * FROM ToDo_MatheusMasson WHERE status = 0"
+    const selectCommand = "SELECT * FROM filmes_Masson_e_Sophia WHERE status = 0"
 
     database.query(selectCommand, (error, data) => {
         if (error) {
@@ -70,7 +70,7 @@ const database = mysql2.createPool({
     host: "benserverplex.ddns.net",
     user: "aluno_projetos",
     password: "aluno@projeto",
-    database: "todo_03mc"
+    database: "alunos_filmes03MC"
 })
 
 app.listen(3333, () => {

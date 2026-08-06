@@ -5,8 +5,10 @@ POST http://localhost:3333/create-task
 Content-Type: application/json
 
 {
-    "description": "Chegar Atrasado",
-    "status": 1
+    "nomeFilme": "nome",
+    "gênero": "Ação",
+    "duração": "120",
+    "classificaçãoEtária": "15"
 }
 
 ###
