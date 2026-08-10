@@ -11,11 +11,11 @@ app.get("/", (request,response) => {
 })
 
 app.post("/create-filme", (request,response) => {
-    const { description, status } = request.body
+    const { nomeFilme, gênero, duração, classificaçãoEtária } = request.body
 
-    const insertCommand = "INSERT INTO filmes_Masson_e_Sophia(description, status) VALUES (?, ?)"
+    const insertCommand = "INSERT INTO filmes_MatheusMassonSophiaBatista(nomeFilme, gênero, duração, classificaçãoEtária) VALUES (?, ?, ?, ?)"
 
-    database.query(insertCommand, [description, status], (error) => {
+    database.query(insertCommand, [nomeFilme, gênero, duração, classificaçãoEtária], (error) => {
         if (error) {
             console.log(error)
         } else {
@@ -26,10 +26,10 @@ app.post("/create-filme", (request,response) => {
     })
 })
 
-app.delete("/create-filme/:id", (request,response) => {
+app.delete("/delete-filme/:id", (request,response) => {
     const { id } = request.params
 
-    const deleteCommand = "DELETE FROM filmes_Masson_e_Sophia WHERE id=?"
+    const deleteCommand = "DELETE FROM filmes_MatheusMassonSophiaBatista WHERE id=?"
 
     database.query(deleteCommand, [id], (error) => {
         if (error) {
@@ -43,7 +43,7 @@ app.delete("/create-filme/:id", (request,response) => {
 })
 
 app.get("/completed-filme", (request, response) => {
-    const selectCommand = "SELECT * FROM filmes_Masson_e_Sophia WHERE status = 1"
+    const selectCommand = "SELECT * FROM filmes_MatheusMassonSophiaBatista WHERE status = 1"
 
     database.query(selectCommand, (error, data) => {
         if (error) {
@@ -54,8 +54,8 @@ app.get("/completed-filme", (request, response) => {
     })
 })
 
-app.get("/incompleted-tasks", (request, response) => {
-    const selectCommand = "SELECT * FROM filmes_Masson_e_Sophia WHERE status = 0"
+app.get("/incompleted-filme", (request, response) => {
+    const selectCommand = "SELECT * FROM filmes_MatheusMassonSophiaBatista WHERE status = 0"
 
     database.query(selectCommand, (error, data) => {
         if (error) {
@@ -65,11 +65,24 @@ app.get("/incompleted-tasks", (request, response) => {
         }
     })
 })
+
+app.put("/update-task/:id", async (req, res) => {
+    const { id } = req.params
+
+    const selectTaskCommand = "SELECT * FROM filmes_MatheusMassonSophiaBatista WHERE id = ?"
+
+    const task = await database.promise().query(selectTaskCommand, [id], (error, data) => {
+        if (error) {
+            console.log(error)
+        } else {
+            return data
+        }
+    })
 
 const database = mysql2.createPool({
     host: "benserverplex.ddns.net",
-    user: "aluno_projetos",
-    password: "aluno@projeto",
+    user: "alunos",
+    password: "senhaAlunos",
     database: "alunos_filmes03MC"
 })
 

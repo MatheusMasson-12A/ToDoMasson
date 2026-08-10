@@ -1,7 +1,7 @@
 GET http://localhost:3333/
 
 ###
-POST http://localhost:3333/create-task
+POST http://localhost:3333/create-filme
 Content-Type: application/json
 
 {
@@ -12,10 +12,10 @@ Content-Type: application/json
 }
 
 ###
-DELETE http://localhost:3333/create-task/
+DELETE http://localhost:3333/delete-filme/1
 
 ###
-GET http://localhost:3333/completed-tasks
+GET http://localhost:3333/completed-filme
 
 ###
-GET http://localhost:3333/imcompleted-tasks
+GET http://localhost:3333/imcompleted-filme
