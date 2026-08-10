@@ -5,17 +5,14 @@ POST http://localhost:3333/create-filme
 Content-Type: application/json
 
 {
-    "nomeFilme": "nome",
-    "gênero": "Ação",
-    "duração": "120",
-    "classificaçãoEtária": "15"
+    "nomeFilme": "Esqueceram de mim",
+    "gênero": "Comédia,Familia",
+    "duração": "243",
+    "classificaçãoEtária": "10"
 }
 
 ###
-DELETE http://localhost:3333/delete-filme/1
+DELETE http://localhost:3333/delete-filme/
 
 ###
-GET http://localhost:3333/completed-filme
-
-###
-GET http://localhost:3333/imcompleted-filme
+PUT http://localhost:3333/update-task/:id5
